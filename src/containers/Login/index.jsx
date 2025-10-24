@@ -1,19 +1,21 @@
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useForm } from "react-hook-form"
+import { set, useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
 import * as yup from "yup"
 import { toast } from "react-toastify"
 
 import Logo  from "../../assets/logo-login.png"
 import { Button } from "../../components/Button"
-import api from "../../services/api.js";
+import { api }  from "../../services/api"
 
 
 import {  
-  Container, LeftContainer, RightContainer, Title, Form, InputContainer, Link 
+  Container, LeftContainer, RightContainer, Title, Form, InputContainer, CliqueAqui , Link
       } 
   from "./styles"
 
 export function Login() {
+  const navigate = useNavigate();
 
   const schema = yup
   .object({
@@ -33,19 +35,28 @@ export function Login() {
 
   const onSubmit = async (data) => {
 
-    const res = await toast.promise(
+    const {
+      data: { token },
+    } = await toast.promise(
       api.post("/sessions", {
       email: data.email,
       password: data.password,
       }), 
       {
         pending: 'Verificando seus dados...', 
-        success: 'Login realizado com sucesso!', 
+        success: {
+          render() {
+            setTimeout(() => {
+              navigate("/");
+            }, 2000);
+            return 'Login realizado com sucesso!';
+          },
+        }, 
         error: 'Erro ao realizar o login, verifique seus dados e tente novamente.'
       }
     );
-    console.log(res);
-   
+
+    localStorage.setItem("token", token);
     };
 
   return (
@@ -72,11 +83,11 @@ export function Login() {
             <p>{errors.password?.message}</p>
           </InputContainer>
           <Button type="submit">Entrar</Button>
-          <Link>
+          <CliqueAqui>
             <p>Não possui conta? 
-              <a href=""> Clique aqui.</a>
+              <Link to="/cadastro"> Clique aqui.</Link>
             </p>
-          </Link>
+          </CliqueAqui>
         </Form>
       </RightContainer>
     </Container>

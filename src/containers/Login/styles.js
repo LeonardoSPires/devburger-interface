@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link as ReactLink } from "react-router-dom";
+
 import BgLogo from '../../assets/bg-logo.jpg';
 import BgForm from '../../assets/bg-form.png';
 
@@ -28,7 +30,7 @@ export const LeftContainer = styled.div`
   max-width: 50%;
 
   img {
-    width: 80%;
+    width: 65%;
     user-select: none;
     cursor: default;
     outline: none;           // remove contorno de foco
@@ -41,7 +43,7 @@ export const LeftContainer = styled.div`
 `;
 export const RightContainer = styled.div`
   background: url('${BgForm}');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   display: flex;
   align-items: center;
@@ -100,7 +102,7 @@ export const InputContainer = styled.div`
     }
 `;
 
-export const Link = styled.div`
+export const CliqueAqui = styled.div`
   p{
     color: #fff;
     margin-top: 16px;
@@ -114,3 +116,8 @@ export const Link = styled.div`
     color: #9758a6;
   }
 `;  
+
+export const Link = styled(ReactLink)`
+  text-decoration: none;
+  color: #fff;
+`;
