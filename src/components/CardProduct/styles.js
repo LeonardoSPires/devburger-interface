@@ -11,6 +11,7 @@ export const Container = styled.div`
     border-radius: 8px;
     cursor: grab;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.55);
+    position: relative;
 
     div {
         display: flex;

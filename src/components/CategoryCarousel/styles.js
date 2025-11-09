@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -30,26 +31,29 @@ export const Title = styled.h2`
 `
 
 export const ContainerItems = styled.div`
-    background: url('${(props) => props.imageUrl}');
+    background: url('${(props) => props.imageurl}');
     background-position: center;
     background-size: cover;
     border-radius: 15px;
 
     display: flex;
     align-items: center;
-    padding: 20px 10px;
-    height: 250px;
+    padding: 20px 0px;
+    height: 300px;
     width: 100%;
-    
+`;
 
-    p {
-        color: #fff;
+export const CategoryButton = styled(Link)`
+    color: #fff;
         padding: 10px 30px;
         border-radius: 30px;
         font-size: 22.5px;
-        font-weight: bold;
+        font-weight: 500;
         background-color: rgba(0, 0, 0, 0.5);
         margin-top: 50px;
+        text-decoration: none;
+
+    &:hover {
+        background-color: #9758a5;
     }
 `;
-

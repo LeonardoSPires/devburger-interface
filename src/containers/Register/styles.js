@@ -43,7 +43,7 @@ export const LeftContainer = styled.div`
 `;
 export const RightContainer = styled.div`
   background: url('${BgForm}');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   display: flex;
   align-items: center;

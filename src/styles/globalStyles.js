@@ -10,12 +10,14 @@ const globalStyle = createGlobalStyle`
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
+    text-decoration: none;
   }
 
   body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
+    overflow-y: scroll;
   }
 
   button, a {
