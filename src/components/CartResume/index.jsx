@@ -12,33 +12,32 @@ export function CartResume() {
     const [finalPrice, setFinalPrice] = useState(0);
     const [deliveryTax] = useState(500);
 
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     const { cartProducts, clearCart } = useCart();
+
     useEffect(() => {
-        const sumAllItems = cartProducts.reduce( (acc, current) => {
-            return current.price * current.quantity + acc;
+        const sumAllItems = cartProducts.reduce( (acc, currency) => {
+            return currency.price * currency.quantity + acc;
         }, 0);
 
         setFinalPrice(sumAllItems)
     }, [cartProducts]);
 
     const submitOrder = async () => {
-        const products = cartProducts.map( (product) => {
+        const products = cartProducts.map((product) => {
             return { 
               id: product.id,
                quantity: product.quantity, 
-               price: product.price};    
-        })
+               price: product.price
+            };    
+        });
 
-        try{
-          const { data } = await api.post('create-payment-intent', { products });
-
-          navigate('/checkout', {
-            state: data,
-          })
-
-          console.log(response);
+        try {
+          const {data} = await api.post('/create-payment-intent', { products });
+          navigate('/checkout',  {
+            state: data, 
+          });
         } catch (err) {
             toast.error('Erro, tente novamente!', {
               position: "top-right",
@@ -48,35 +47,9 @@ export function CartResume() {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
-              theme: 'light',
-              transition: 'bounce',            
+              theme: 'light',          
             })
         }
-
-        /* try {
-      const { status } = await api.post(
-      "/orders", 
-      { products }, 
-      {
-        validateStatus: () => true,
-      });
-
-      if (status === 200 || status === 201) {
-
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
-        clearCart();
-        
-        toast.success("Pedido realizado com sucesso!");
-      } else if (status === 409) {
-        toast.error("Falha ao realizar seu pedido!");
-      } else {
-        throw new Error(); 
-      }
-    } catch (error) {
-      toast.error("Falha no sistema! Tente novamente.");
-    } */
 };
 
     return (
@@ -85,7 +58,7 @@ export function CartResume() {
                 <div className="container-top">
                     <h2 className="title">Resumo do Pedido</h2>
                     <p className="items">Itens</p>
-                    <p className="items-price">{formatPrice(finalPrice)}</p>
+                    <p className="items-price">{formatPrice(finalPrice)}</p> 
                     <p className="delivery-tax">Taxa de Entrega</p>
                     <p className="delivey-tax-price">{formatPrice(deliveryTax)}</p>
                 </div>

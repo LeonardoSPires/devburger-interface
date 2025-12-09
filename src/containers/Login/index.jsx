@@ -14,6 +14,7 @@ import {
   Container, LeftContainer, RightContainer, Title, Form, InputContainer, CliqueAqui , Link
       } 
   from "./styles"
+import { nav } from "framer-motion/client"
 
 export function Login() {
   const navigate = useNavigate();
@@ -46,9 +47,13 @@ export function Login() {
         success: {
           render() {
             setTimeout(() => {
-              navigate("/");
+              if(userData?.admin){
+                navigate('/admin/pedidos');
+              } else {
+                navigate("/");
+              }
             }, 2000);
-            return 'Login realizado com sucesso!';
+            return 'Seja Bem-vindo(a)!';
           },
         }, 
         error: 'Erro ao realizar o login, verifique seus dados e tente novamente.'

@@ -1,17 +1,16 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
 import { api } from "../../services/api";
 import { formatPrice } from "../../utils/formatPrice";
 import { CardProduct } from "../../components/CardProduct";
 
 import { Container, Banner, CategoryMenu, ProductsContainer, CategoryButton } from "./styles";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export function Menu() {
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
-
-    const navigate = useNavigate();
 
     const { search } = useLocation();
 
@@ -60,10 +59,10 @@ export function Menu() {
             );
             setFilteredProducts(newFilteredProducts);
         }
-    }, [ products, activeCategory]);
+    }, [products, activeCategory]);
+
     return (
         <Container>
-
             <Banner>
                 <a href="/">↩</a>
                 <h1>O MELHOR <br />
@@ -72,26 +71,14 @@ export function Menu() {
                 ESTÁ AQUI!
                 <span>Esse cardápio está irresistível!</span>
                 </h1>
-                
             </Banner>
             <CategoryMenu>
                 {categories.map((category) => (
                     <CategoryButton 
-                    key={category.id}
-                    $isActiveCategory={ category.id === activeCategory }
-                    onClick={ () => {
-                        navigate(
-                            {
-                                pathname: '/cardapio',
-                                search: `?categoria=${category.id}`,
-                            },
-                            { 
-                                replace: true 
-                            },
-                        );
-                        setActiveCategory(category.id);
-                    }}
-                    
+                        key={category.id}
+                        $isActiveCategory={category.id === activeCategory}
+                        to={`/cardapio?categoria=${category.id}`}
+                        onClick={() => setActiveCategory(category.id)}
                     >
                         {category.name}
                     </CategoryButton>
@@ -103,8 +90,6 @@ export function Menu() {
                     key={product.id} />
                 ))}
             </ProductsContainer>
-
-
         </Container>
     )
 }

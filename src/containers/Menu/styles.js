@@ -7,7 +7,7 @@ import BackgroundCarrossel from '../../assets/bg-form.png';
 export const Container = styled.div`
     width: 100%;
     min-height: 100vh;
-    background-color: #F0F0F0;
+    background-color: ${props => props.theme.secondWhite};
     overflow: hidden;
 
     background: linear-gradient(
@@ -28,11 +28,11 @@ export const Banner = styled.div`
     background: url('${bannerMenu}') no-repeat;
     background-position: center;
     background-size: cover;
-    background-color: #1f1f1f;
+    background-color: ${props => props.theme.mainBlack};
 
     a {
         font-size: 20px;
-        color: #fff;
+        color: ${props => props.theme.white};
         top: 10px;
         right: 20px;
         position: fixed;
@@ -47,7 +47,7 @@ export const Banner = styled.div`
         justify-content: center;
         align-items: center;
         &:hover {
-            color: #9758a5;
+            color: ${props => props.theme.purple};
         }
     }
 
@@ -55,14 +55,14 @@ export const Banner = styled.div`
         font-family: 'Road Rage', sans-serif;
         font-size: 80px;
         line-height: 65px;
-        color: #fff;
+        color: ${props => props.theme.white};
         position: absolute;
 
         right: 20%;
         top: 30%;
         span {
             display: block; 
-            color: #fff;
+            color: ${props => props.theme.white};
             font-size: 20px;
         }
     }
@@ -79,13 +79,13 @@ export const CategoryButton = styled(Link)`
     text-decoration: none;
     cursor: pointer;
     background: none;
-    color: ${props => props.$isActiveCategory ? '#9758a6' : '#393939ff'};
+    color: ${props => props.$isActiveCategory ? `${props.theme.purple}` : `${props.theme.darkGray}`};
     font-size: 24px;
     font-weight: 600;
     padding-bottom: 5px;
     line-height: 20px;
     border: none;
-    border-bottom: ${(props) => props.$isActiveCategory && '3px solid #9758a6'};
+    border-bottom: ${(props) => props.$isActiveCategory && `3px solid ${props.theme.purple}`};
 `;
 
 export const ProductsContainer = styled.div`

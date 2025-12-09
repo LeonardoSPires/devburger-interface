@@ -58,11 +58,11 @@ export const RightContainer = styled.div`
 export const Title = styled.h2`
   font-family: "Road Rage", sans-serif;
   font-size: 40px;
-  color: #fff;
+  color: ${props => props.theme.white};
 
   span {
     font-family: "Road Rage", sans-serif;
-    color: #9758a6
+    color: ${props => props.theme.purple}
   }
 `;
 
@@ -89,13 +89,13 @@ export const InputContainer = styled.div`
       border: none;
       height: 52px;
       border-radius: 5px;
-      background-color: #fff;
+      background-color: ${props => props.theme.white};
     }
 
     p {
       font-size: 14px;
       line-height: 80%;
-      color: #ff4d4d;
+      color: ${props => props.theme.red};
       height: 10px;
       font-weight: 600;
       margin-top: 4px;
@@ -104,20 +104,20 @@ export const InputContainer = styled.div`
 
 export const CliqueAqui = styled.div`
   p{
-    color: #fff;
+    color: ${props => props.theme.white};
     margin-top: 16px;
   }
 
   a {
-    color: #fff;
+    color: ${props => props.theme.white};
     text-decoration: underline;
   }
   a:hover {
-    color: #9758a6;
+    color: ${props => props.theme.purple};
   }
 `;  
 
 export const Link = styled(ReactLink)`
   text-decoration: none;
-  color: #fff;
+  color: ${props => props.theme.white};
 `;
