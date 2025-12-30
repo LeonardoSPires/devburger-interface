@@ -2,7 +2,6 @@ import { Navigate, Outlet } from "react-router-dom";
 import { Container } from "./styles";
 import { SideNavAdmin } from "../../components/SideNavAdmin";
 
-
 export function AdminLayout() {
     const { admin: isAdmin } = JSON.parse(localStorage.getItem("devburger:userData")
     );

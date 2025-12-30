@@ -8,6 +8,11 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -19,26 +24,45 @@ import { toast } from 'react-toastify';
 import { ProductImage, SelectStatus } from './styles';
 import { orderStatusOptions } from './orderStatus';
 
-export function Row(props) {
-  const { row, setOrders } = props;
-  const [open, setOpen] = useState(false);
+export function Row({ row, orders, setOrders }) {
 
-  const handleDelete = async () => {
-    try {
-      await api.delete(`/orders/${row.orderId}`);
-      toast.success('Pedido deletado com sucesso!');
-      
-      const { data } = await api.get('/orders');
-      setOrders(data);
-    } catch (error) {
-      toast.error('Erro ao deletar pedido!');
-      console.error(error);
-    }
-  };
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [openConfirm, setOpenConfirm] = useState(false);
 
   async function newStatusOrder(id, status) {
-    await api.put(`orders/${id}`, { status });
-  };
+    try {
+      setLoading(true);
+      await api.put(`orders/${id}`, { status });
+
+      const newOrders = orders.map( (order) => order._id === id ? { ...order, status } : order );
+
+      setOrders(newOrders); 
+
+    } catch (error) {
+      console.error(error);
+      toast.error('Erro ao atualizar status do pedido!');
+    }
+    finally {
+      setLoading(false);
+    }
+  }
+
+ const handleDelete = async () => {
+  try {
+    await api.delete(`/orders/${row.orderId}`);
+    toast.success('Pedido deletado com sucesso!');
+    
+    // Remover o pedido deletado da lista
+    const updatedOrders = orders.filter(order => order._id !== row.orderId);
+    setOrders(updatedOrders);
+    
+    setOpenConfirm(false);
+  } catch (error) {
+    toast.error('Erro ao deletar pedido!');
+    console.error(error);
+  }
+};
   
 
   return (
@@ -63,14 +87,23 @@ export function Row(props) {
             options={orderStatusOptions.filter((status) => status.id !== 0)} 
             placeholder="Status" 
             defaultValue={ orderStatusOptions.find( status => status.value === row.status || null, )}
-            onChange={ status => newStatusOrder( row.orderId, status.value) }
+            onChange={ status => newStatusOrder( row.orderId, status.value)}
+            isLoading={loading}
+            menuPortalTarget={document.body}
           />
         </TableCell>
         <TableCell>
           <IconButton
             aria-label="delete"
             color="error"
-            onClick={handleDelete}
+            onClick={() => setOpenConfirm(true)}
+            disabled={row.status !== 'Entregue'}
+            sx={{
+              '&.Mui-disabled': {
+                color: '#ccc',
+                cursor: 'not-allowed'
+              }
+            }}
           >
             <DeleteIcon />
           </IconButton>
@@ -111,11 +144,26 @@ export function Row(props) {
           </Collapse>
         </TableCell>
       </TableRow>
+
+      <Dialog open={openConfirm} onClose={() => setOpenConfirm(false)}>
+        <DialogTitle>Confirmar Exclusão</DialogTitle>
+        <DialogContent>
+          Tem certeza que deseja apagar este pedido?
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpenConfirm(false)}>Cancelar</Button>
+          <Button onClick={handleDelete} color="error" variant="contained">
+            Deletar
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }
 
 Row.propTypes = {
+  orders: PropTypes.arrayOf.isRequired,
+  setOrders: PropTypes.func.isRequired,
   row: PropTypes.shape({
     orderId: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
