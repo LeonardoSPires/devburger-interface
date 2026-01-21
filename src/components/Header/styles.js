@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+// Container principal do Header - fixado no topo da página
 export const Container = styled.div`
     background-color: ${props => props.theme.mainBlack};
     position: fixed;
@@ -8,7 +9,21 @@ export const Container = styled.div`
     height: 72px;
     padding: 0 20px;
     z-index: 999;
+    
+    /* Ajusta padding para telas menores */
+    @media (max-width: 768px) {
+        height: 60px;
+        padding: 0 15px;
+    }
+    
+    /* Reduz ainda mais em dispositivos móveis */
+    @media (max-width: 480px) {
+        height: 56px;
+        padding: 0 10px;
+    }
 `;
+
+// Content - centraliza o conteúdo do header com espaçamento responsivo
 export const Content = styled.div`
     display: flex;
     justify-content: space-between;
@@ -16,7 +31,14 @@ export const Content = styled.div`
     width: 100%;
     max-width: 1120px;
     margin: 0 auto;
+    
+    /* Em tablets, reduz max-width para melhor aproveitamento */
+    @media (max-width: 1024px) {
+        max-width: 100%;
+    }
 `;
+
+// Navegação - menu horizontal responsivo
 export const Navigation = styled.nav`
     display: flex;
     align-items: center;
@@ -28,13 +50,38 @@ export const Navigation = styled.nav`
         justify-content: center;
         align-items: center;
         gap: 20px;
+        
+        /* Reduz gap em telas menores */
+        @media (max-width: 768px) {
+            gap: 12px;
+        }
+        
+        /* Em mobile, oculta o menu (pode ser substituído por menu hambúrguer) */
+        @media (max-width: 480px) {
+            gap: 8px;
+        }
     }
 
     hr {
         height: 24px;
         border: 1px solid ${props => props.theme.darkGray};
+        
+        /* Oculta separador em telas pequenas */
+        @media (max-width: 480px) {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        height: 60px;
+    }
+    
+    @media (max-width: 480px) {
+        height: 56px;
     }
 `;
+
+// Links do header - estilo responsivo com transições
 export const HeaderLink = styled(Link)`
     color: ${ props => props.$isActive 
         ? props.theme.purple 
@@ -47,15 +94,40 @@ export const HeaderLink = styled(Link)`
     &:hover {
         color: ${(props) => props.theme.purple};
     }
-    `;
+    
+    /* Reduz tamanho em tablets */
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+    
+    /* Oculta links em mobile (implementar menu hambúrguer) */
+    @media (max-width: 480px) {
+        font-size: 11px;
+    }
+`;
+
+// Opções do header - alinha ícones e botões
 export const Options = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 48px;
+    
+    /* Reduz espaçamento em tablets */
+    @media (max-width: 768px) {
+        gap: 24px;
+    }
+    
+    /* Minimiza gap em mobile */
+    @media (max-width: 480px) {
+        gap: 12px;
+    }
 `;
+
+// Perfil - informações do usuário
 export const Profile = styled.div`
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 12px;
     font-size: 14px;
@@ -70,15 +142,57 @@ export const Profile = styled.div`
             color: #9758a6;
         }
     }
+    
+    /* Oculta texto do perfil em tablets e mobile */
+    @media (max-width: 768px) {
+        gap: 8px;
+        
+        p {
+            font-size: 12px;
+        }
+    }
+    
+    /* Esconde o perfil completamente em mobile pequeno */
+    @media (max-width: 480px) {
+        flex-direction: column;
+        font-size: 12px;
+        gap: 0;
+        
+        p {
+            display: none;
+        }
+    }
 `;
+
+// Container para links com ícones
 export const LinkContainer = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
+    
+    /* Reduz gap em telas pequenas */
+    @media (max-width: 480px) {
+        gap: 0;
+        min-height: 0;
+    }
 `;
+
+// Botão de logout
 export const Logout = styled.button`
     color: #ff3205;
     font-weight: 700;
     background-color: transparent;
     border: none;
+    transition: opacity 200ms;
+    
+    /* Melhora hover em dispositivos */
+    &:hover {
+        opacity: 0.8;
+    }
+    
+    /* Reduz tamanho em mobile */
+    @media (max-width: 480px) {
+        font-size: 12px;
+    }
 `;
