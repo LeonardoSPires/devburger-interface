@@ -86,13 +86,23 @@ export const HeaderLink = styled(Link)`
     color: ${ props => props.$isActive 
         ? props.theme.purple 
         : props.theme.white};
-    border-bottom: ${ props => 
-        props.$isActive ? `1px solid ${props.theme.purple}` : 'none'};
+    border-bottom: none;
     font-size: 14px;
-    transition: color 200ms;
+    transition: all 200ms;
+    display: flex;
+    align-items: center;
+
+    svg {
+        transition: color 200ms;
+        color: ${props => props.$isActive ? props.theme.purple : props.theme.white};
+    }
 
     &:hover {
         color: ${(props) => props.theme.purple};
+        
+        svg {
+            color: ${(props) => props.theme.purple};
+        }
     }
     
     /* Reduz tamanho em tablets */

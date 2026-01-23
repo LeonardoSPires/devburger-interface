@@ -53,11 +53,12 @@ export function Header() {
                         </div>
                     </Profile>
                     <LinkContainer>
-                        <div style={{position: 'relative'}}>
-                            <ShoppingCart color="#fff" size={24} />
-                            {totalItems > 0 && <CartBadge>{totalItems}</CartBadge>}
-                        </div>
-                        <HeaderLink to="/carrinho">Carrinho</HeaderLink>
+                        <HeaderLink to="/carrinho" $isActive={pathname === "/carrinho"}>
+                            <div style={{position: 'relative'}}>
+                                <ShoppingCart color={pathname === "/carrinho" ? "#9758a6" : "#fff"} size={24} />
+                                {totalItems > 0 && <CartBadge>{totalItems}</CartBadge>}
+                            </div>
+                        </HeaderLink>
                     </LinkContainer>
                 </Options>
             </Content>
