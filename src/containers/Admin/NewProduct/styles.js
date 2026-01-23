@@ -13,7 +13,7 @@ export const Form = styled.form`
     border-radius: 20px;
     background-color: ${(props) => props.theme.black};
     padding: 32px;
-    width: 100%;
+    width: 360px;
     max-width: 380px;
     display: flex;
     flex-direction: column;

@@ -16,6 +16,12 @@ export const Filter = styled.div`
     justify-content: center;
     gap: 50px;
     margin: 28px 0;
+
+    @media (max-width: 480px) {
+      width: 900px;
+      gap: 30px;
+      margin: 28px 0;
+    }
 `;
 
 export const FilterOpitions = styled.button`

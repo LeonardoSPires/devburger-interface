@@ -14,6 +14,7 @@ const globalStyle = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
     text-decoration: none;
+    user-select: none;
   }
 
   /* Estilos do body - ajustados para responsividade */
@@ -55,6 +56,9 @@ const globalStyle = createGlobalStyle`
     html, body {
       width: 100%;
       overflow-x: hidden;
+    }
+    @media (max-width: 480px) {
+      width: 800px;
     }
   }
 `;

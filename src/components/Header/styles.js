@@ -114,8 +114,12 @@ export const Options = styled.div`
     gap: 48px;
     
     /* Reduz espaçamento em tablets */
+    @media (max-width: 1024px) {
+        gap: 32px;
+    }
+    
     @media (max-width: 768px) {
-        gap: 24px;
+        gap: 16px;
     }
     
     /* Minimiza gap em mobile */
@@ -169,7 +173,7 @@ export const LinkContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 0;
     
     /* Reduz gap em telas pequenas */
     @media (max-width: 480px) {
@@ -194,5 +198,50 @@ export const Logout = styled.button`
     /* Reduz tamanho em mobile */
     @media (max-width: 480px) {
         font-size: 12px;
+    }
+`;
+
+// Badge/Contador no ícone do carrinho
+export const CartBadge = styled.span`
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: ${props => props.theme.red};
+    color: ${props => props.theme.white};
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    border: 2px solid ${props => props.theme.mainBlack};
+    animation: slideIn 0.3s ease-in-out;
+
+    @keyframes slideIn {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+        top: -6px;
+        right: -6px;
+    }
+
+    @media (max-width: 480px) {
+        width: 16px;
+        height: 16px;
+        font-size: 9px;
+        top: -5px;
+        right: -5px;
     }
 `;
