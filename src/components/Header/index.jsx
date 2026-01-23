@@ -12,7 +12,9 @@ import {
     Options, 
     Profile,
     Content,
-    CartBadge
+    CartBadge,
+    CartIconWrapper,
+    StyledShoppingCart
     } from "./styles.js";
 
 
@@ -54,10 +56,10 @@ export function Header() {
                     </Profile>
                     <LinkContainer>
                         <HeaderLink to="/carrinho" $isActive={pathname === "/carrinho"}>
-                            <div style={{ position: 'relative' }}>
-                                <ShoppingCart color={pathname === "/carrinho" ? "#9758a6" : "#fff"} size={24} />
+                            <CartIconWrapper>
+                                <StyledShoppingCart $isActive={pathname === "/carrinho"} size={24} />
                                 {totalItems > 0 && <CartBadge>{totalItems}</CartBadge>}
-                            </div>
+                            </CartIconWrapper>
                         </HeaderLink>
                     </LinkContainer>
                 </Options>

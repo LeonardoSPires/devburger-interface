@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ShoppingCart } from '@phosphor-icons/react';
 
 // Container principal do Header - fixado no topo da página
 export const Container = styled.div`
@@ -254,4 +255,15 @@ export const CartBadge = styled.span`
         top: -5px;
         right: -5px;
     }
+`;
+
+// Wrapper para o ícone do carrinho
+export const CartIconWrapper = styled.div`
+    position: relative;
+`;
+
+// Ícone do carrinho com cores dinâmicas
+export const StyledShoppingCart = styled(ShoppingCart)`
+    color: ${props => props.$isActive ? props.theme.purple : props.theme.white};
+    transition: color 200ms;
 `;
