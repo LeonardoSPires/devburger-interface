@@ -54,7 +54,7 @@ export function Header() {
                     </Profile>
                     <LinkContainer>
                         <HeaderLink to="/carrinho" $isActive={pathname === "/carrinho"}>
-                            <div style={{position: 'relative'}}>
+                            <div style={{ position: 'relative' }}>
                                 <ShoppingCart color={pathname === "/carrinho" ? "#9758a6" : "#fff"} size={24} />
                                 {totalItems > 0 && <CartBadge>{totalItems}</CartBadge>}
                             </div>
