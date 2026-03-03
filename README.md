@@ -1,16 +1,142 @@
-# React + Vite
+# 🍔 DevBurger Interface
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend da aplicação DevBurger.
 
-Currently, two official plugins are available:
+Aplicação web desenvolvida em React para consumo da API DevBurger, permitindo autenticação de usuários, listagem de produtos, gerenciamento de carrinho e finalização de pedidos com pagamento via Stripe.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- React Router DOM
+- Axios
+- Styled Components
+- Context API
+- Stripe JS
+- Vite
+- ESLint + Prettier
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔐 Funcionalidades
+
+### 👤 Autenticação
+- Cadastro de usuário
+- Login
+- Armazenamento de token JWT
+- Rotas protegidas
+
+### 🍔 Produtos
+- Listagem de produtos
+- Filtro por categoria
+- Interface responsiva
+
+### 🛒 Carrinho
+- Adicionar produto
+- Remover produto
+- Atualizar quantidade
+- Cálculo automático do total
+
+### 💳 Checkout
+- Integração com Stripe
+- Criação de Payment Intent
+- Finalização de pedido
+
+---
+
+## 📸 Preview da Aplicação
+
+(Adicionar prints aqui depois)
+
+---
+
+## 🧱 Estrutura do Projeto
+
+```
+src/
+ ├── assets/
+ ├── components/
+ ├── config/
+ ├── containers/
+ ├── hooks/
+ ├── layouts/
+ ├── routes/
+ ├── services/
+ ├── styles/
+ ├── utils/
+ └── main.jsx
+```
+
+### Organização
+
+- assets → imagens e arquivos estáticos
+- components → componentes reutilizáveis
+- containers → páginas principais da aplicação
+- hooks → hooks customizados
+- layouts → estrutura base das páginas
+- routes → controle de rotas e proteção
+- services → configuração da API (Axios)
+- styles → estilos globais
+- utils → funções auxiliares
+
+---
+
+## ⚙️ Como Executar
+
+### 1️⃣ Clone o repositório
+
+```bash
+git clone https://github.com/LeonardoSPires/devburger-interface.git
+```
+
+### 2️⃣ Instale as dependências
+
+```bash
+npm install
+```
+
+### 3️⃣ Configure a URL da API
+
+No arquivo de configuração do Axios, ajuste para:
+
+```
+http://localhost:3000
+```
+
+ou para a URL do backend em produção.
+
+### 4️⃣ Execute o projeto
+
+```bash
+npm run dev
+```
+
+Aplicação disponível em:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🌐 Backend
+
+API utilizada neste projeto:
+
+👉 https://github.com/LeonardoSPires/DevBurger
+
+---
+
+## 📱 Responsividade
+
+O projeto segue o guia definido em:
+
+RESPONSIVITY_GUIDE.md
+
+---
+
+## 👨‍💻 Autor
+
+Leonardo Pires  
+Desenvolvedor Front-End com foco em evolução Fullstack
