@@ -152,6 +152,6 @@ Frontend e backend estão disponíveis separadamente no GitHub.
 
 ### Desenvolvedor
 
-**Leonardo Pires**
+**Leonardo Pires** e **Rodolfo MOri - DEVCLUB ***
 
 Desenvolvedor Full Stack com foco em aplicações web, APIs e soluções para empresas.
