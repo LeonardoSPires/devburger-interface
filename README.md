@@ -1,142 +1,157 @@
-# 🍔 DevBurger Interface
+# 🍔 DevBurger
 
-Frontend da aplicação DevBurger.
+Frontend da aplicação **DevBurger**, um sistema Full Stack de delivery desenvolvido com **React** e integrado a uma API própria construída com Node.js.
 
-Aplicação web desenvolvida em React para consumo da API DevBurger, permitindo autenticação de usuários, listagem de produtos, gerenciamento de carrinho e finalização de pedidos com pagamento via Stripe.
+A aplicação permite navegar pelos produtos, realizar autenticação, adicionar itens ao carrinho, criar pedidos e realizar o fluxo de pagamento.
 
----
+## 📋 Sobre o projeto
 
-## 🚀 Tecnologias Utilizadas
+O DevBurger foi desenvolvido como uma aplicação Full Stack para simular o funcionamento de uma plataforma de delivery.
 
-- React
-- React Router DOM
-- Axios
-- Styled Components
-- Context API
-- Stripe JS
-- Vite
-- ESLint + Prettier
+Este repositório contém o **frontend da aplicação**, responsável pela interface e interação do usuário com os recursos disponibilizados pela API.
 
----
+O backend foi desenvolvido separadamente utilizando **Node.js, Express, PostgreSQL, Sequelize e JWT**.
 
-## 🔐 Funcionalidades
+## ✨ Principais funcionalidades
 
-### 👤 Autenticação
-- Cadastro de usuário
-- Login
-- Armazenamento de token JWT
-- Rotas protegidas
+* Cadastro de usuários
+* Login e autenticação
+* Navegação entre páginas
+* Rotas protegidas
+* Exibição de produtos
+* Exibição de categorias
+* Carrinho de compras
+* Gerenciamento dos itens do carrinho
+* Criação de pedidos
+* Integração com API REST
+* Fluxo de pagamento com Stripe
+* Interface responsiva
 
-### 🍔 Produtos
-- Listagem de produtos
-- Filtro por categoria
-- Interface responsiva
+## 🛠️ Tecnologias utilizadas
 
-### 🛒 Carrinho
-- Adicionar produto
-- Remover produto
-- Atualizar quantidade
-- Cálculo automático do total
+* React
+* JavaScript
+* React Router
+* Axios
+* Styled Components
+* Context API
+* Stripe
+* Git
+* GitHub
 
-### 💳 Checkout
-- Integração com Stripe
-- Criação de Payment Intent
-- Finalização de pedido
+## 🔗 Integração com a API
 
----
+O frontend se comunica com uma API REST desenvolvida especificamente para o DevBurger.
 
-## 📸 Preview da Aplicação
+A comunicação entre frontend e backend é realizada utilizando **Axios**, permitindo operações como autenticação, consulta de produtos, gerenciamento de pedidos e outras funcionalidades da aplicação.
 
-(Adicionar prints aqui depois)
+## 🔐 Autenticação
 
----
+O sistema possui fluxo de cadastro e login integrado ao backend.
 
-## 🧱 Estrutura do Projeto
+Após a autenticação, as informações necessárias são utilizadas para controlar o acesso às áreas protegidas da aplicação.
 
-```
-src/
- ├── assets/
- ├── components/
- ├── config/
- ├── containers/
- ├── hooks/
- ├── layouts/
- ├── routes/
- ├── services/
- ├── styles/
- ├── utils/
- └── main.jsx
-```
+O backend utiliza **JWT (JSON Web Token)** para autenticação.
 
-### Organização
+## 🛒 Carrinho
 
-- assets → imagens e arquivos estáticos
-- components → componentes reutilizáveis
-- containers → páginas principais da aplicação
-- hooks → hooks customizados
-- layouts → estrutura base das páginas
-- routes → controle de rotas e proteção
-- services → configuração da API (Axios)
-- styles → estilos globais
-- utils → funções auxiliares
+A aplicação possui gerenciamento de carrinho, permitindo ao usuário selecionar produtos e controlar os itens antes da criação do pedido.
 
----
+O estado compartilhado da aplicação é gerenciado utilizando recursos do React, incluindo **Context API**.
 
-## ⚙️ Como Executar
+## 💳 Pagamentos
 
-### 1️⃣ Clone o repositório
+O DevBurger possui integração com **Stripe** para implementar o fluxo de pagamento da aplicação.
 
-```bash
+## ⚙️ Backend
+
+O backend do DevBurger foi desenvolvido com:
+
+* Node.js
+* Express
+* PostgreSQL
+* Sequelize
+* JWT
+* Stripe
+* Docker
+
+Código da API:
+
+https://github.com/LeonardoSPires/DevBurger
+
+## 🚀 Executando o projeto
+
+Clone o repositório:
+
+```bash id="d4s4gu"
 git clone https://github.com/LeonardoSPires/devburger-interface.git
 ```
 
-### 2️⃣ Instale as dependências
+Entre na pasta:
 
-```bash
+```bash id="8weq1e"
+cd devburger-interface
+```
+
+Instale as dependências:
+
+```bash id="6b1gkz"
 npm install
 ```
 
-### 3️⃣ Configure a URL da API
+Execute o projeto:
 
-No arquivo de configuração do Axios, ajuste para:
-
-```
-http://localhost:3000
-```
-
-ou para a URL do backend em produção.
-
-### 4️⃣ Execute o projeto
-
-```bash
+```bash id="rd6jrv"
 npm run dev
 ```
 
-Aplicação disponível em:
+## 🎯 O que este projeto demonstra
 
+O desenvolvimento do DevBurger envolveu conceitos importantes de desenvolvimento frontend, como:
+
+* componentização com React;
+* gerenciamento de estado;
+* consumo de API REST;
+* autenticação;
+* rotas públicas e protegidas;
+* integração frontend/backend;
+* gerenciamento de carrinho;
+* integração com serviço de pagamento;
+* estilização utilizando Styled Components;
+* organização e reutilização de componentes.
+
+## 🔄 Arquitetura da aplicação
+
+O DevBurger é dividido em dois projetos:
+
+```text id="yq37pl"
+                 DevBurger
+                     │
+           ┌─────────┴─────────┐
+           │                   │
+        Frontend             Backend
+           │                   │
+         React              Node.js
+     React Router           Express
+         Axios            PostgreSQL
+   Styled Components       Sequelize
+      Context API             JWT
+           │                   │
+           └────── API ────────┘
+                     │
+                   Stripe
 ```
-http://localhost:5173
-```
+
+## 📌 Status
+
+Projeto desenvolvido para fins de estudo e portfólio.
+
+Frontend e backend estão disponíveis separadamente no GitHub.
 
 ---
 
-## 🌐 Backend
+### Desenvolvedor
 
-API utilizada neste projeto:
+**Leonardo Pires**
 
-👉 https://github.com/LeonardoSPires/DevBurger
-
----
-
-## 📱 Responsividade
-
-O projeto segue o guia definido em:
-
-RESPONSIVITY_GUIDE.md
-
----
-
-## 👨‍💻 Autor
-
-Leonardo Pires  
-Desenvolvedor Front-End com foco em evolução Fullstack
+Desenvolvedor Full Stack com foco em aplicações web, APIs e soluções para empresas.
